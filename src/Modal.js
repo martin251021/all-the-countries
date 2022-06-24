@@ -64,5 +64,4 @@ export default function Modal(props) {
     )
 }
 
-// vytiahnut z modal-country array v ktorom budu kody borders krajin
-// podla kodov potom v celom objekte "countries" musim vyhladat krajiny jednu po druhej a vykreslit
+

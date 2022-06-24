@@ -109,11 +109,17 @@ export default function Main(props) {
         color: props.lightModeActive ? "#212224ff" : "white"
     }
 
+    const stylesNavbar = {
+        backgroundColor: props.lightModeActive ? "#f8f8f8" : "#212224ff"
+    }
+
     // if(fetchedData) {
 
     return(
         <div className="main">
-            <div className="navbar">
+            <div 
+                style={stylesNavbar}
+                className="navbar">
                 <input
                     style={styles} 
                     onChange={handleSearchChange}

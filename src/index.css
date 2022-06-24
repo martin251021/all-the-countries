@@ -28,12 +28,16 @@ code {
 }
 
 .main {
-  padding: 4rem;
+  padding: 2rem 4rem 4rem 4rem;
 }
 
 .navbar {
   display: flex;
   align-items: center;
+  background-color: #f8f8f8;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
 }
 
 .search {

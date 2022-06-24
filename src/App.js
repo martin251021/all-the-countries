@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 function App() {
 
-  const [lightModeActive, setLightModeActive] = useState(false)
+  const [lightModeActive, setLightModeActive] = useState(true)
   
   document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#212224ff"
 

@@ -12,10 +12,10 @@ export default function Header(props) {
     return(
         <div 
             style={styles}
-            onClick={handleThemeSwitch}
+            
             className="header">
             <h1>Where in the world?</h1>
-            <h3 className="header-mode-switch" >☾ Dark Mode</h3>
+            <h3 onClick={handleThemeSwitch} className="header-mode-switch" >☾ Dark Mode</h3>
         </div>
     )
 }

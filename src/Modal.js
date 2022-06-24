@@ -1,7 +1,10 @@
 import Neighbour from "./Neighbour"
+import React, { useState } from "react"
 
 export default function Modal(props) {
-    
+
+    const [width, setWindowWidth] = useState(0)
+
     const bordersCodes = props.country.borders ? props.country.borders.map(e => e) : [0]
     const filterByBorder = function(code) {
         if(bordersCodes.includes(code)) {
@@ -13,7 +16,14 @@ export default function Modal(props) {
 
     const styles = {
         backgroundColor: props.lightModeActive ? "white" : "#636363",
-        color: props.lightModeActive ? "black" : "white"
+        color: props.lightModeActive ? "black" : "white",
+        flexDirection: width < 1232 ? "column" : "row",
+        fontSize: width < 1232 ? "10px" : "16px"
+    }
+
+    const imgStyle = {
+        width: width < 1232 ? "12rem" : "18rem",
+        height: width < 1232 ? "8rem" : "12rem"
     }
 
     const borderObjects = props.countriesAll.filter(e => filterByBorder(e.cca3))
@@ -33,10 +43,30 @@ export default function Modal(props) {
 
                 lightModeActive={props.lightModeActive}
                 setLightModeActive={props.setLightModeActive}
+
+                width={width}
                 
             />
         )
     })
+
+    React.useEffect(() => { 
+
+        updateDimensions();
+   
+        window.addEventListener("resize", updateDimensions);
+        return () => 
+          window.removeEventListener("resize", updateDimensions);
+       }, [])
+
+       const updateDimensions = () => {
+         const width = window.innerWidth
+         setWindowWidth(width)
+       }
+
+    const stylesNeighbours = {
+        backgroundColor: width < 650 ? "red" : "black"
+    }
 
     return(
         <div
@@ -46,7 +76,9 @@ export default function Modal(props) {
              style={styles}   
              className="modal-country-container">
                 <button onClick={props.handleClickModalHide} className="close-modal">&times;</button>
-                <img className="modal-country-img" src={props.country.flags.png}></img>
+                <img 
+                    style={imgStyle}
+                    className="modal-country-img" src={props.country.flags.png}></img>
                 <h1 className="modal-country-name">{props.country.name.common}</h1>
                 <h4>{props.country.name.official ? `Official name: ${props.country.name.official}` : ""}</h4>
                 <p>{props.country.capital ? `Capital city: ${props.country.capital[0]}` : "No capital city"}</p>
@@ -56,7 +88,8 @@ export default function Modal(props) {
                 <p>Population density: {Math.floor(props.country.population/props.country.area)}/km²</p>
                 <a href={props.country.maps.googleMaps} target="_blank">Google Maps</a>
             </div>
-            <div className="modal-country-neighbours">
+            <div 
+                className="modal-country-neighbours">
                 <h2>{`${borderElements.length === 0 ? "" : "Neighbouring countries"}`}</h2>
                 {borderElements}
             </div>

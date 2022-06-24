@@ -27,8 +27,6 @@ export default function Country(props) {
                 <h4>{props.e.capital ? `Capital city: ${props.e.capital[0]}` : "No capital city"}</h4> 
             </div>
             <h3></h3>
-            
-        </div>
-        
+        </div>       
     )
 }

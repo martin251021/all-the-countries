@@ -9,7 +9,7 @@ function App() {
   
   document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#212224ff"
 
-  
+  console.log("a")
 
   return (
     <div>

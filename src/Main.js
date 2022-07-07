@@ -85,6 +85,10 @@ export default function Main(props) {
         
     },[activeFilter])
 
+    // ked nepridám žiadnu dependendy array do useEffectu, bude sa cb useffectu spustat po každom renderi
+    // ked pridam prazdnu dependency array, spusti sa cb iba po prvom renderi
+    // ked dam do dependency array state, spusti sa cb vždy ked sa state zmení
+
     React.useEffect(() => {
         if(activeSearch === "") {
             setFilteredCountries(countries)

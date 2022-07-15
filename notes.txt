@@ -7,5 +7,5 @@
 - pokusit sa použiť useReducer
 - upravit zobrazovanie krajin na hlavnej stranke - implementovat pagination (založka edge)
 - 
-- NAJPRV : pokusit sa nahradit countries.js čisto iba API callom, data z fetchu nahrat cele ako premennu a s tym potom pracovat
+- NAJPRV : pokusit sa nahradit countries.js čisto iba API callom (axios), data z fetchu nahrat cele ako premennu a s tym potom pracovat
 - BONUS: nahrať všetky data na mongodb, spravit server a vytvorit vlastnu API, ktora bude data vracat, potom volat tuto API pre data

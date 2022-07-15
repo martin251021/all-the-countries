@@ -127,6 +127,7 @@ export default function Main(props) {
                 <input
                     style={styles} 
                     onChange={handleSearchChange}
+                    value={activeSearch}
                     placeholder="Search for a country.." 
                     className="search" />
                 <select

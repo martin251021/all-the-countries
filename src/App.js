@@ -1,10 +1,9 @@
 import './App.css';
-import Header from './Header';
-import Main from './Main';
-import SharedHeader from './SharedHeader';
+import Main from './pages/Main';
+import SharedHeader from './pages/SharedHeader';
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SingleCountry from './SingleCountry';
+import SingleCountry from './pages/SingleCountry';
 
 function App() {
 
@@ -13,17 +12,6 @@ function App() {
   document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#212224ff"
 
   return (
-    // <div>
-    //   <Header
-    //     lightModeActive={lightModeActive}
-    //     setLightModeActive={setLightModeActive}
-    //   />
-    //   <Main 
-    //     lightModeActive={lightModeActive}
-    //     setLightModeActive={setLightModeActive}
-    //   />
-    // </div>
-
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedHeader 

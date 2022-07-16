@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import Country from "./Country"
-import Modal from "./Modal"
-import countries from "./countries"
+import Country from "../components/Country"
+import Modal from "../components/Modal"
+import countries from "../data/countries"
 
 
 export default function Main(props) {

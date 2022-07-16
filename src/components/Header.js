@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom"
+
 export default function Header(props) {
 
     const handleThemeSwitch = () => {
@@ -6,7 +8,8 @@ export default function Header(props) {
 
     const styles = {
         backgroundColor: props.lightModeActive ? "white" : "#111213ff",
-        color: props.lightModeActive ? "black" : "white"
+        color: props.lightModeActive ? "black" : "white",
+        textDecoration: "none"
     }
     
     return(
@@ -14,7 +17,9 @@ export default function Header(props) {
             style={styles}
             
             className="header">
-            <h1>Where in the world?</h1>
+            <Link style={styles} to="/">
+                <h1>Where in the world?</h1>
+            </Link>
             <h3 onClick={handleThemeSwitch} className="header-mode-switch" >☾ Dark Mode</h3>
         </div>
     )

@@ -82,6 +82,12 @@ code {
 
 .country-data > h2 {
   font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.country-data > h4 {
+  margin: 8px 0 8px 0;
 }
 
 .countries-elements {

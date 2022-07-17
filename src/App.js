@@ -1,7 +1,7 @@
 import './App.css';
 import Main from './pages/Main';
 import SharedHeader from './pages/SharedHeader';
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SingleCountry from './pages/SingleCountry';
 import { AppProvider } from './context/AppContext';

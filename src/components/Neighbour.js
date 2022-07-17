@@ -1,11 +1,20 @@
+import { useApp, useAppUpdate } from "../context/AppContext";
+
 export default function Neighbour(props) {
+
+    const appContext = useApp()
+    const appContextUpdate = useAppUpdate()
+
+    const {lightModeActive, id, isModalActive, isOverlayActive, filteredCountries, activeFilter, activeSearch} = appContext
+    const {setId, setModalActive, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange} = appContextUpdate
+    
     const getId = function() {
-        props.setId(props.e.id)
+        setId(props.e.id)
     }
 
     const styles = {
-        backgroundColor: props.lightModeActive ? "white" : "#403E3D",
-        color: props.lightModeActive ? "black" : "white"
+        backgroundColor: lightModeActive ? "white" : "#403E3D",
+        color: lightModeActive ? "black" : "white"
     }
 
     const imgStyles = {
@@ -21,7 +30,7 @@ export default function Neighbour(props) {
         <div 
             style={styles}
             onClick={() => {
-            props.handleClick()
+            handleClickModalShow()
             getId()
           } }  className="neighbour">
             <img 

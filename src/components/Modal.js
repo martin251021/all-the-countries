@@ -1,7 +1,14 @@
 import Neighbour from "./Neighbour"
 import React, { useState } from "react"
+import { useApp, useAppUpdate } from "../context/AppContext";
 
 export default function Modal(props) {
+
+    const appContext = useApp()
+    const appContextUpdate = useAppUpdate()
+
+    const {lightModeActive, id, isModalActive, isOverlayActive, filteredCountries, activeFilter, activeSearch} = appContext
+    const {setId, setModalActive, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange} = appContextUpdate
 
     const [width, setWindowWidth] = useState(0)
 
@@ -15,8 +22,8 @@ export default function Modal(props) {
     }
 
     const styles = {
-        backgroundColor: props.lightModeActive ? "white" : "#636363",
-        color: props.lightModeActive ? "black" : "white",
+        backgroundColor: lightModeActive ? "white" : "#636363",
+        color: lightModeActive ? "black" : "white",
         flexDirection: width < 1232 ? "column" : "row",
         fontSize: width < 1232 ? "10px" : "16px"
     }
@@ -33,17 +40,6 @@ export default function Modal(props) {
             <Neighbour
                 key={e.id} 
                 e={e}
-
-                id={props.id}
-                setId={props.setId}
-                isModalActive={props.isModalActive}
-                isOverlayActive={props.isOverlayActive}
-                handleClickModalHide={props.handleClickModalHide}
-                handleClick={props.handleClick}
-
-                lightModeActive={props.lightModeActive}
-                setLightModeActive={props.setLightModeActive}
-
                 width={width}
                 
             />
@@ -71,11 +67,11 @@ export default function Modal(props) {
     return(
         <div
         style={styles}
-         className={`${props.isModalActive ? "modal" : "modal hidden"}`}>
+         className={`${isModalActive ? "modal" : "modal hidden"}`}>
             <div
              style={styles}   
              className="modal-country-container">
-                <button onClick={props.handleClickModalHide} className="close-modal">&times;</button>
+                <button onClick={handleClickModalHide} className="close-modal">&times;</button>
                 <img 
                     style={imgStyle}
                     className="modal-country-img" src={props.country.flags.png}></img>

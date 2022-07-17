@@ -1,12 +1,20 @@
+import { useApp, useAppUpdate } from "../context/AppContext";
+
 export default function Country(props) {
 
+    const appContext = useApp()
+    const appContextUpdate = useAppUpdate()
+
+    const {lightModeActive, id, isModalActive, isOverlayActive, filteredCountries, activeFilter, activeSearch} = appContext
+    const {setId, setModalActive, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange} = appContextUpdate
+
     const getId = function() {
-        props.setId(props.e.id)
+        setId(props.e.id)
     }
 
     const styles = {
-        backgroundColor: props.lightModeActive ? "white" : "rgb(84, 79, 79)",
-        color: props.lightModeActive ? "black" : "white"
+        backgroundColor: lightModeActive ? "white" : "rgb(84, 79, 79)",
+        color: lightModeActive ? "black" : "white"
     }
 
     return(
@@ -14,7 +22,7 @@ export default function Country(props) {
         <div
         style={styles}
         onClick={() => {
-          props.handleClick()
+          handleClickModalShow()
           getId()
         } } 
         id={props.e.id} 

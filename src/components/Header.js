@@ -1,14 +1,16 @@
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import { useApp, useAppUpdate } from "../context/AppContext";
 
-export default function Header(props) {
+export default function Header() {
+    const appContext = useApp()
+    const appContextUpdate = useAppUpdate()
 
-    const handleThemeSwitch = () => {
-        props.setLightModeActive(prevState => !prevState)
-    }
+    const {lightModeActive} = appContext
+    const {themeSwitch} = appContextUpdate
 
     const styles = {
-        backgroundColor: props.lightModeActive ? "white" : "#111213ff",
-        color: props.lightModeActive ? "black" : "white",
+        backgroundColor: lightModeActive ? "white" : "#111213ff",
+        color: lightModeActive ? "black" : "white",
         textDecoration: "none"
     }
     
@@ -20,7 +22,7 @@ export default function Header(props) {
             <Link style={styles} to="/">
                 <h1>Where in the world?</h1>
             </Link>
-            <h3 onClick={handleThemeSwitch} className="header-mode-switch" >☾ Dark Mode</h3>
+            <h3 onClick={themeSwitch} className="header-mode-switch" >☾ Dark Mode</h3>
         </div>
     )
 }

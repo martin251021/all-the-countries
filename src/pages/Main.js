@@ -1,10 +1,16 @@
-import React, { useState } from "react"
-import Country from "../components/Country"
-import Modal from "../components/Modal"
-import countries from "../data/countries"
+import React, { useState } from "react";
+import Country from "../components/Country";
+import Modal from "../components/Modal";
+import countries from "../data/countries";
+import { useApp, useAppUpdate } from "../context/AppContext";
 
 
 export default function Main(props) {
+
+    const appContext = useApp()
+    const appContextUpdate = useAppUpdate()
+
+    const {lightModeActive} = appContext
 
     const [id, setId] = useState(0)
     const [isModalActive, setModalActive] = useState(false)
@@ -43,7 +49,7 @@ export default function Main(props) {
                 handleClick={handleClickModalShow}
                 id={id}
                 setId={setId}
-                lightModeActive={props.lightModeActive}
+                lightModeActive={lightModeActive}
                 setLightModeActive={props.setLightModeActive}
             />
         )
@@ -109,12 +115,12 @@ export default function Main(props) {
     }
 
     const styles = {
-        backgroundColor: props.lightModeActive ? "white" : "#a1a1a1ff",
-        color: props.lightModeActive ? "#212224ff" : "white"
+        backgroundColor: lightModeActive ? "white" : "#a1a1a1ff",
+        color: lightModeActive ? "#212224ff" : "white"
     }
 
     const stylesNavbar = {
-        backgroundColor: props.lightModeActive ? "#f8f8f8" : "#212224ff"
+        backgroundColor: lightModeActive ? "#f8f8f8" : "#212224ff"
     }
 
     // if(fetchedData) {
@@ -159,7 +165,7 @@ export default function Main(props) {
                     id={id}
                     setId={setId}
 
-                    lightModeActive={props.lightModeActive}
+                    lightModeActive={lightModeActive}
                     setLightModeActive={props.setLightModeActive}
                 />
             </div>

@@ -11,24 +11,12 @@ export const AppContextUpdate = React.createContext()
 
 function App() {
 
-  // const [lightModeActive, setLightModeActive] = useState(true)
-
-  // document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#212224ff"
-
   return (
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SharedHeader 
-                  // lightModeActive={lightModeActive}
-                  // setLightModeActive={setLightModeActive}
-                  />
-                  } >
-            <Route index element={<Main 
-                    // lightModeActive={lightModeActive}
-                    // setLightModeActive={setLightModeActive}
-                    />
-                    } />
+          <Route path="/" element={<SharedHeader />} >
+            <Route index element={<Main />} />
             <Route path=":countryId" element={<SingleCountry />} />
           </Route>
         </Routes>

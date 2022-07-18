@@ -31,8 +31,6 @@ export default function Main(props) {
         backgroundColor: lightModeActive ? "#f8f8f8" : "#212224ff"
     }
 
-    // if(fetchedData) {
-
     return(
         <div className="main">
             <div 
@@ -75,7 +73,4 @@ export default function Main(props) {
                 className={`${isOverlayActive ? "overlay" : "overlay hidden"}`}></div>
         </div>
     )
-    // } else {
-    //     return null
-    // }
 }

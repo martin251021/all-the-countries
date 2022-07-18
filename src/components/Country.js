@@ -6,7 +6,7 @@ export default function Country(props) {
     const appContextUpdate = useAppUpdate()
 
     const {lightModeActive, id, isModalActive, isOverlayActive, filteredCountries, activeFilter, activeSearch} = appContext
-    const {setId, setModalActive, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange} = appContextUpdate
+    const {setId, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange} = appContextUpdate
 
     const getId = function() {
         setId(props.e.id)

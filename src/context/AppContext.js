@@ -27,6 +27,7 @@ export function AppProvider({ children }) {
     const [activeFilter, setActiveFilter] = useState("All")
     const [activeSearch, setActiveSearch] = useState("")
 
+
     const handleClickModalShow = function() {
         setModalActive(true)
         setOverlayActive(true)

@@ -21,8 +21,6 @@ export function AppProvider({ children }) {
     }
 
     const [id, setId] = useState(0)
-    const [isModalActive, setModalActive] = useState(false)
-    const [isOverlayActive, setOverlayActive] = useState(false)
     const [filteredCountries, setFilteredCountries] = useState(null)
     const [activeFilter, setActiveFilter] = useState("All")
     const [activeSearch, setActiveSearch] = useState("")
@@ -74,31 +72,10 @@ export function AppProvider({ children }) {
         }
     }
 
-    const useEscape = function(onEscape) {
-        useEffect(() => {
-            const handleEsc = (event) => {
-                if (event.keyCode === 27) 
-                    onEscape()
-            };
-            window.addEventListener('keydown', handleEsc);
-    
-            return () => {
-                window.removeEventListener('keydown', handleEsc);
-            };
-        }, []);
-    }
-
-    useEscape(() => {
-        setModalActive(false)
-        setOverlayActive(false)
-    })
-
     return(
         <AppContext.Provider value={{
             lightModeActive:lightModeActive,
             id: id,
-            isModalActive: isModalActive,
-            isOverlayActive: isOverlayActive,
             filteredCountries: filteredCountries,
             activeFilter: activeFilter,
             activeSearch: activeSearch,
@@ -108,14 +85,11 @@ export function AppProvider({ children }) {
             <AppContextUpdate.Provider value={{
                 themeSwitch,
                 setId,
-                setModalActive,
-                setOverlayActive,
                 setFilteredCountries,
                 setActiveFilter,
                 setActiveSearch,
                 handleFilterChange,
                 handleSearchChange,
-                useEscape,
                 setApiData,
                 setLoading
             }}>

@@ -26,7 +26,6 @@ export function AppProvider({ children }) {
     const [filteredCountries, setFilteredCountries] = useState(null)
     const [activeFilter, setActiveFilter] = useState("All")
     const [activeSearch, setActiveSearch] = useState("")
-
     const [apiData, setApiData] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -46,16 +45,6 @@ export function AppProvider({ children }) {
 
         fetchData()
     },[])
-
-    const handleClickModalShow = function() {
-        setModalActive(true)
-        setOverlayActive(true)
-    }
-
-    const handleClickModalHide = function() {
-        setModalActive(false)
-        setOverlayActive(false)
-    }
 
     const handleFilterChange = e => {
         setActiveFilter(e.target.value)
@@ -124,8 +113,6 @@ export function AppProvider({ children }) {
                 setFilteredCountries,
                 setActiveFilter,
                 setActiveSearch,
-                handleClickModalShow,
-                handleClickModalHide,
                 handleFilterChange,
                 handleSearchChange,
                 useEscape,

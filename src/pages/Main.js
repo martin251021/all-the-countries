@@ -1,44 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Country from "../components/Country";
-import Modal from "../components/Modal";
-import countries from "../data/countries";
 import { useApp, useAppUpdate } from "../context/AppContext";
-import axios from "axios";
 
 
-export default function Main(props) {
+export default function Main() {
 
     const appContext = useApp()
     const appContextUpdate = useAppUpdate()
 
-    const {lightModeActive, id, isModalActive, isOverlayActive, filteredCountries, activeFilter, activeSearch, apiData, loading} = appContext
-    const {setId, setModalActive, setOverlayActive, setFilteredCountries, setActiveFilter, setActiveSearch, handleClickModalShow, handleClickModalHide, handleFilterChange, handleSearchChange, setLightModeActive, setApiData, setLoading} = appContextUpdate
-
-    useEffect(() => {
-        const fetchData = async() => {
-            try {
-                setLoading(true)
-                const response = await axios("https://restcountries.com/v3.1/all")
-                setApiData(response.data)
-                // console.log(response.data.map(e => e.cca3))
-                setLoading(false)
-            } catch(err) {
-                setLoading(false)
-                console.log(err)
-            }
-        }
-
-        fetchData()
-    },[])
-
-    // const countriesElements = apiData.map(e => {
-    //     return(
-    //         <Country
-    //             key={e.id}
-    //             e={e}
-    //         />
-    //     )
-    // })
+    const {lightModeActive, filteredCountries, activeFilter, activeSearch, loading} = appContext
+    const {handleFilterChange, handleSearchChange} = appContextUpdate
 
     const styles = {
         backgroundColor: lightModeActive ? "white" : "#a1a1a1ff",
@@ -75,30 +46,17 @@ export default function Main(props) {
                 </select>
             </div>
             <div className="countries-elements" >
-               {/* {countriesElements}  */}
-
-               {loading? <h1>Loading..</h1> : apiData.map((e, i) => {
-        return(
-            <Country
-                key={i+1}
-                e={e}
-            />
-        )
-    })}
+               {loading? <h1>Loading..</h1> : 
+               filteredCountries.map((e, i) => {
+                     return(
+                            <Country
+                                key={i+1}
+                                e={e}
+                                    />
+                                        )
+                            })}                                                   
 
             </div>
-            <div>
-                <Modal 
-                    country={countries[id]}
-                    countriesAll={countries}
-                />
-            </div>
-            <div
-                onClick={() => {
-                    setModalActive(false)
-                    setOverlayActive(false)
-                }}
-                className={`${isOverlayActive ? "overlay" : "overlay hidden"}`}></div>
         </div>
     )
 

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import countries from "../data/countries";
 import axios from "axios";
 
 const AppContext = React.createContext()
@@ -24,14 +23,29 @@ export function AppProvider({ children }) {
     const [id, setId] = useState(0)
     const [isModalActive, setModalActive] = useState(false)
     const [isOverlayActive, setOverlayActive] = useState(false)
-    const [filteredCountries, setFilteredCountries] = useState(countries)
+    const [filteredCountries, setFilteredCountries] = useState(null)
     const [activeFilter, setActiveFilter] = useState("All")
     const [activeSearch, setActiveSearch] = useState("")
 
     const [apiData, setApiData] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    useEffect(() => {
+        const fetchData = async() => {
+            try {
+                setLoading(true)
+                const response = await axios("https://restcountries.com/v3.1/all")
+                setFilteredCountries(response.data)
+                setApiData(response.data)
+                setLoading(false)
+            } catch(err) {
+                setLoading(false)
+                console.log(err)
+            }
+        }
 
+        fetchData()
+    },[])
 
     const handleClickModalShow = function() {
         setModalActive(true)
@@ -53,18 +67,18 @@ export function AppProvider({ children }) {
 
     React.useEffect(() => {
         if(activeFilter === "All") {
-            setFilteredCountries(countries)
+            setFilteredCountries(apiData)
         } else {
-            setFilteredCountries(countries.filter(e => e.region === activeFilter))
+            setFilteredCountries(apiData.filter(e => e.region === activeFilter))
         }
         
     },[activeFilter])
 
     React.useEffect(() => {
         if(activeSearch === "") {
-            setFilteredCountries(countries)
+            setFilteredCountries(apiData)
         } else {
-            setFilteredCountries(countries.filter(e => filterHelper(e)))
+            setFilteredCountries(apiData.filter(e => filterHelper(e)))
         }
     }, [activeSearch])
 
@@ -76,7 +90,6 @@ export function AppProvider({ children }) {
         } else {
             return false
         }
-        
     }
 
     const useEscape = function(onEscape) {

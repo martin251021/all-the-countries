@@ -8,7 +8,14 @@ export default function Main() {
     const appContext = useApp()
     const appContextUpdate = useAppUpdate()
 
-    const {lightModeActive, filteredCountries, activeFilter, activeSearch, loading} = appContext
+    const {
+        lightModeActive, 
+        filteredCountries, 
+        activeFilter, 
+        activeSearch, 
+        loading
+            } = appContext
+
     const {handleFilterChange, handleSearchChange} = appContextUpdate
 
     const styles = {

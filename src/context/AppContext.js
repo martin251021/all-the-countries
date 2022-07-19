@@ -54,7 +54,7 @@ export function AppProvider({ children }) {
         setActiveSearch(e.target.value)
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if(activeFilter === "All" && activeSearch === "") {
             setFilteredCountries(apiData)
         } else if(activeFilter === "All" && activeSearch !== "") {
@@ -75,7 +75,7 @@ export function AppProvider({ children }) {
     }
 
     const useEscape = function(onEscape) {
-        React.useEffect(() => {
+        useEffect(() => {
             const handleEsc = (event) => {
                 if (event.keyCode === 27) 
                     onEscape()

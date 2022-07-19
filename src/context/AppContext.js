@@ -66,21 +66,14 @@ export function AppProvider({ children }) {
     }
 
     React.useEffect(() => {
-        if(activeFilter === "All") {
+        if(activeFilter === "All" && activeSearch === "") {
             setFilteredCountries(apiData)
-        } else {
-            setFilteredCountries(apiData.filter(e => e.region === activeFilter))
-        }
-        
-    },[activeFilter])
-
-    React.useEffect(() => {
-        if(activeSearch === "") {
-            setFilteredCountries(apiData)
-        } else {
+        } else if(activeFilter === "All" && activeSearch !== "") {
             setFilteredCountries(apiData.filter(e => filterHelper(e)))
+        } else {
+            setFilteredCountries(apiData.filter(e => e.region === activeFilter).filter(e => filterHelper(e)))
         }
-    }, [activeSearch])
+    },[activeFilter, activeSearch])
 
     const filterHelper = (e) => {
         if(e.name.common.toLowerCase().includes(activeSearch.toLowerCase())) {

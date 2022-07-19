@@ -116,8 +116,15 @@ code {
   z-index: 10;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+}
+
+.single-country {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
 }
 
 .modal-country-container {
@@ -160,9 +167,9 @@ code {
 }
 
 .modal-country-img {
-  margin:0;
-  width: 18rem;
-  height: 12rem;
+  margin-right: 4rem;
+  width: 27rem;
+  height: 18rem;
 }
 
 .modal-country-name {
@@ -190,5 +197,15 @@ code {
 
 .modal-country-neighbours > h2 {
   text-align: center;
+}
+
+.border-country {
+  list-style: none;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
 }
 

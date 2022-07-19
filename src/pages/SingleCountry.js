@@ -1,13 +1,20 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { useApp } from "../context/AppContext";
 
 export default function SingleCountry() {
     const {countryId} = useParams()
+    const {lightModeActive, apiData} = useApp()
 
     const [loading, setLoading] = useState(true)
     const [country, setCountry] = useState(null)
-    
+
+    const styles = {
+        backgroundColor: lightModeActive ? "#f8f8f8" : "#212224ff",
+        color: lightModeActive ? "black" : "white"
+    }
+
     useEffect(() => {
         const fetchCountry = async() => {
             try{
@@ -22,19 +29,47 @@ export default function SingleCountry() {
         fetchCountry()
     }, [])
 
+    const filterByBorder = function(bordersCodes, code) {
+        if(bordersCodes.includes(code)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     return(
         
-        <div>
-            {loading? <h1>Loading...</h1> : <div>
-                             <h1 className="modal-country-name">{country.name.common}</h1>
-                <h4>{country.name.official ? `Official name: ${country.name.official}` : ""}</h4>
-                <p>{country.capital ? `Capital city: ${country.capital[0]}` : "No capital city"}</p>
-                <p>{country.subregion ? `Region: ${country.region} - ${country.subregion}` : `${country.region}`}</p>
-                <p>Area: {country.area.toLocaleString("en-US")} km²</p>
-                <p>Population: {country.population.toLocaleString("en-US")}</p>
-                <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
-                <a href={country.maps.googleMaps} target="_blank">Google Maps</a>
-                </div>}
+        <div style={styles}>
+            {loading? <h1>Loading...</h1> : 
+            <div className="single-country">
+                <div className="modal-country-container">
+                    <img className="modal-country-img" src={country.flags.png}></img>
+                </div>
+                <div className="modal-country-container">
+                    <h1 className="modal-country-name">{country.name.common}</h1>
+                    <h4>{country.name.official ? `Official name: ${country.name.official}` : ""}</h4>
+                    <p>{country.capital ? `Capital city: ${country.capital[0]}` : "No capital city"}</p>
+                    <p>{country.subregion ? `Region: ${country.region} - ${country.subregion}` : `${country.region}`}</p>
+                    <p>Area: {country.area.toLocaleString("en-US")} km²</p>
+                    <p>Population: {country.population.toLocaleString("en-US")}</p>
+                    <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
+                    <a href={country.maps.googleMaps} target="_blank">Google Maps</a>
+                    <h4>Border countries:</h4>
+                        <ul>
+                            {
+                            apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e, i) => 
+                                    <Link to={`/${e.cca3}`}>
+                                        <li key={e.cca3}
+                                            className="border-country">
+                                            {e.name.common}
+                                        </li>
+                                    </Link>
+                                )
+                            }
+                        </ul>
+
+                </div>
+            </div>}
         </div>
     )
 }

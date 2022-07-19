@@ -7,7 +7,7 @@ import { useApp} from "../context/AppContext";
 export default function Main() {
 
     const appContext = useApp()
-    const { filteredCountries, loading} = appContext
+    const {filteredCountries, loading} = appContext
 
      return(
         <div className="main">

@@ -1,4 +1,5 @@
 import { useApp, useAppUpdate } from "../context/AppContext";
+import {Link} from "react-router-dom";
 
 export default function Country(props) {
 
@@ -18,15 +19,16 @@ export default function Country(props) {
     }
 
     return(
-        
+        <Link to={`/${props.e.cca3}`}>
         <div
         style={styles}
-        onClick={() => {
-          handleClickModalShow()
-          getId()
-        } } 
-        id={props.e.id} 
+        // onClick={() => {
+        //   handleClickModalShow()
+        //   getId()
+        // } } 
+        id={props.e.cca3} 
         className="country" >
+            
             <img className="country-img" src={props.e.flags.png}/>
             <div className="country-data">
                 <h2>{props.e.name.common}</h2>
@@ -35,6 +37,7 @@ export default function Country(props) {
                 <h4>{props.e.capital ? `Capital city: ${props.e.capital[0]}` : "No capital city"}</h4> 
             </div>
             <h3></h3>
-        </div>       
+        </div>
+       </ Link>        
     )
 }

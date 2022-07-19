@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import countries from "../data/countries";
+import axios from "axios";
 
 const AppContext = React.createContext()
 const AppContextUpdate = React.createContext()
@@ -26,6 +27,10 @@ export function AppProvider({ children }) {
     const [filteredCountries, setFilteredCountries] = useState(countries)
     const [activeFilter, setActiveFilter] = useState("All")
     const [activeSearch, setActiveSearch] = useState("")
+
+    const [apiData, setApiData] = useState(null)
+    const [loading, setLoading] = useState(true)
+
 
 
     const handleClickModalShow = function() {
@@ -101,7 +106,9 @@ export function AppProvider({ children }) {
             isOverlayActive: isOverlayActive,
             filteredCountries: filteredCountries,
             activeFilter: activeFilter,
-            activeSearch: activeSearch
+            activeSearch: activeSearch,
+            apiData: apiData,
+            loading: loading
         }}>
             <AppContextUpdate.Provider value={{
                 themeSwitch,
@@ -115,7 +122,9 @@ export function AppProvider({ children }) {
                 handleClickModalHide,
                 handleFilterChange,
                 handleSearchChange,
-                useEscape
+                useEscape,
+                setApiData,
+                setLoading
             }}>
                 {children}
             </AppContextUpdate.Provider>

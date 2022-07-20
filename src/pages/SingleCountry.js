@@ -53,7 +53,7 @@ export default function SingleCountry() {
                     <p>Area: {country.area.toLocaleString("en-US")} km²</p>
                     <p>Population: {country.population.toLocaleString("en-US")}</p>
                     <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
-                    <a href={country.maps.googleMaps} target="_blank" style={{textDecoration: "none", ...styles}}>Google Maps</a>
+                    <a href={country.maps.googleMaps} target="_blank" style={styles}>Google Maps</a>
                     {apiData?<>
                         <h4>Border countries:</h4>
                         <ul className="border-country-box">

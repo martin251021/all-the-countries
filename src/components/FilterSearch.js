@@ -5,7 +5,7 @@ export default function FilterSearch() {
     const appContext = useApp()
     const appContextUpdate = useAppUpdate()
 
-    const {activeSearch, activeFilter, lightModeActive} = appContext
+    const {activeSearch, activeFilter, lightModeActive, width} = appContext
     const {handleSearchChange, handleFilterChange} = appContextUpdate
 
     const styles = {
@@ -14,7 +14,19 @@ export default function FilterSearch() {
     }
 
     const stylesNavbar = {
-        backgroundColor: lightModeActive ? "#f8f8f8" : "#263340"
+        backgroundColor: lightModeActive ? "#f8f8f8" : "#263340",
+        display: width < 650 ? "block" : "flex",
+        padding: width < 650 ? "0" : "1rem"
+    }
+
+    const searchStyle = {
+        width: width < 650 ? "100%" : "35%"
+    }
+
+    const filterStyle = {
+        width: width < 650 ? "100%" : "25%",
+        marginTop: width < 650 ? "8px" : "0"
+
     }
 
     return(
@@ -22,13 +34,13 @@ export default function FilterSearch() {
         style={stylesNavbar}
         className="navbar">
         <input
-            style={styles} 
+            style={{...styles, ...searchStyle}} 
             onChange={handleSearchChange}
             value={activeSearch}
-            placeholder="Search for a country.."
+            placeholder="Search for a country..."
             className="search" />
         <select
-            style={styles} 
+            style={{...styles, ...filterStyle}} 
             onChange={handleFilterChange}
             value={activeFilter} 
             className="filter">                       

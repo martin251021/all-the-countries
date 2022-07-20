@@ -26,6 +26,7 @@ export function AppProvider({ children }) {
     const [activeSearch, setActiveSearch] = useState("")
     const [apiData, setApiData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [width, setWindowWidth] = useState(0)
 
     useEffect(() => {
         const fetchData = async() => {
@@ -43,6 +44,19 @@ export function AppProvider({ children }) {
 
         fetchData()
     },[])
+
+    React.useEffect(() => { 
+        updateDimensions();
+        window.addEventListener("resize", updateDimensions);
+
+        return () => 
+          window.removeEventListener("resize", updateDimensions);
+    }, [])
+
+    const updateDimensions = () => {
+         const width = window.innerWidth
+         setWindowWidth(width)
+    }
 
     const handleFilterChange = e => {
         setActiveFilter(e.target.value)
@@ -80,7 +94,8 @@ export function AppProvider({ children }) {
             activeFilter: activeFilter,
             activeSearch: activeSearch,
             apiData: apiData,
-            loading: loading
+            loading: loading,
+            width: width
         }}>
             <AppContextUpdate.Provider value={{
                 themeSwitch,

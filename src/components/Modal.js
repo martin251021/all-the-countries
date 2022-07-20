@@ -53,9 +53,9 @@ export default function Modal(props) {
         window.addEventListener("resize", updateDimensions);
         return () => 
           window.removeEventListener("resize", updateDimensions);
-       }, [])
+    }, [])
 
-       const updateDimensions = () => {
+    const updateDimensions = () => {
          const width = window.innerWidth
          setWindowWidth(width)
        }

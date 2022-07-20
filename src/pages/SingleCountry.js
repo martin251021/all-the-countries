@@ -54,7 +54,8 @@ export default function SingleCountry() {
                     <p>Population: {country.population.toLocaleString("en-US")}</p>
                     <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
                     <a href={country.maps.googleMaps} target="_blank" style={{textDecoration: "none", ...styles}}>Google Maps</a>
-                    <h4>Border countries:</h4>
+                    {apiData?<>
+                        <h4>Border countries:</h4>
                         <ul className="border-country-box">
                             {
                             apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e, i) => 
@@ -67,7 +68,8 @@ export default function SingleCountry() {
                                 )
                             }
                         </ul>
-
+                        </> : <h4>Loading...</h4>
+                        }
                 </div>
             </div>}
         </div>

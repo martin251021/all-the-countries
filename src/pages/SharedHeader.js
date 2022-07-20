@@ -1,13 +1,10 @@
 import {Outlet} from "react-router-dom"
 import Header from "../components/Header"
 
-export default function SharedHeader(props) {
+export default function SharedHeader() {
     return(
         <>
-            <Header
-                    lightModeActive={props.lightModeActive}
-                    setLightModeActive={props.setLightModeActive}
-            />
+            <Header/>
                 <Outlet/>
         </>
     )

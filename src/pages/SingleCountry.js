@@ -54,21 +54,23 @@ export default function SingleCountry() {
                     <p>Population: {country.population.toLocaleString("en-US")}</p>
                     <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
                     <a href={country.maps.googleMaps} target="_blank" style={{transition: "background-color 0.2s ease, color 0.2s ease", ...styles}}>Google Maps</a>
-                    {apiData?<>
-                        <h4>Border countries:</h4>
-                        <ul className="border-country-box">
-                            {
-                            apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e, i) => 
-                                    <Link key={e.cca3} style={{listStyle:"none"}} to={`/${e.cca3}`}>
-                                        <li className="border-country-item"
-                                            style={{...styles, boxShadow: lightModeActive? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "0 1px 3px #BECCCC"}}>
-                                            {e.name.common}
-                                        </li>
-                                    </Link>
-                                )
-                            }
-                        </ul>
-                        </> : <h4>Loading...</h4>
+                    {apiData ? 
+                        country.borders ?
+                        <>
+                            <h4>Border countries:</h4>
+                            <ul className="border-country-box">
+                                {
+                                apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e) => 
+                                        <Link key={e.cca3} style={{listStyle:"none"}} to={`/${e.cca3}`}>
+                                            <li className="border-country-item"
+                                                style={{...styles, boxShadow: lightModeActive? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "0 1px 3px #BECCCC"}}>
+                                                {e.name.common}
+                                            </li>
+                                        </Link>
+                                    )
+                                }
+                            </ul>
+                        </> : <h4>No neighbouring countries</h4> : <h4>Loading...</h4>
                         }
                 </div>
             </div>}

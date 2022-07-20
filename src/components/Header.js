@@ -22,7 +22,7 @@ export default function Header() {
             <Link style={styles} to="/">
                 <h1>Where in the world?</h1>
             </Link>
-            <h3 onClick={themeSwitch} className="header-mode-switch" >☾ Dark Mode</h3>
+            <h3 onClick={themeSwitch} className="header-mode-switch" >{lightModeActive ? "☾ Dark Mode" : "🌣 Light Mode"  }</h3>
         </div>
     )
 }

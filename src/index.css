@@ -122,9 +122,10 @@ code {
 
 .single-country {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-top: 4rem;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .modal-country-container {
@@ -199,13 +200,18 @@ code {
   text-align: center;
 }
 
-.border-country {
+.border-country-box {
+  padding-left: 0;
+}
+
+.border-country-item {
   list-style: none;
-  display: inline-block;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: white;
+  display: inline-block;
   padding: 5px;
   border-radius: 5px;
   margin-left: 5px;
+  margin-top: 5px;
 }
 

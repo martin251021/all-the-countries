@@ -9,12 +9,12 @@ export default function FilterSearch() {
     const {handleSearchChange, handleFilterChange} = appContextUpdate
 
     const styles = {
-        backgroundColor: lightModeActive ? "white" : "#a1a1a1ff",
+        backgroundColor: lightModeActive ? "white" : "#546F8C",
         color: lightModeActive ? "#212224ff" : "white"
     }
 
     const stylesNavbar = {
-        backgroundColor: lightModeActive ? "#f8f8f8" : "#212224ff"
+        backgroundColor: lightModeActive ? "#f8f8f8" : "#263340"
     }
 
     return(
@@ -25,7 +25,8 @@ export default function FilterSearch() {
             style={styles} 
             onChange={handleSearchChange}
             value={activeSearch}
-            placeholder="Search for a country.." 
+            placeholder="Search for a country.."
+            placeholderTextColor="white"
             className="search" />
         <select
             style={styles} 

@@ -9,7 +9,7 @@ export default function Header() {
     const {themeSwitch} = appContextUpdate
 
     const styles = {
-        backgroundColor: lightModeActive ? "white" : "#111213ff",
+        backgroundColor: lightModeActive ? "white" : "#344557",
         color: lightModeActive ? "black" : "white",
         textDecoration: "none"
     }

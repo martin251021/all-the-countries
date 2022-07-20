@@ -11,7 +11,7 @@ export default function SingleCountry() {
     const [country, setCountry] = useState(null)
 
     const styles = {
-        backgroundColor: lightModeActive ? "#f8f8f8" : "#212224ff",
+        backgroundColor: lightModeActive ? "#f8f8f8" : "#263340",
         color: lightModeActive ? "black" : "white"
     }
 
@@ -27,7 +27,7 @@ export default function SingleCountry() {
             }
         }
         fetchCountry()
-    }, [])
+    }, [countryId])
 
     const filterByBorder = function(bordersCodes, code) {
         if(bordersCodes.includes(code)) {
@@ -53,14 +53,15 @@ export default function SingleCountry() {
                     <p>Area: {country.area.toLocaleString("en-US")} km²</p>
                     <p>Population: {country.population.toLocaleString("en-US")}</p>
                     <p>Population density: {Math.floor(country.population/country.area)}/km²</p>
-                    <a href={country.maps.googleMaps} target="_blank">Google Maps</a>
+                    <a href={country.maps.googleMaps} target="_blank" style={{textDecoration: "none", ...styles}}>Google Maps</a>
                     <h4>Border countries:</h4>
-                        <ul>
+                        <ul className="border-country-box">
                             {
                             apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e, i) => 
-                                    <Link to={`/${e.cca3}`}>
+                                    <Link style={{listStyle:"none"}} to={`/${e.cca3}`}>
                                         <li key={e.cca3}
-                                            className="border-country">
+                                            className="border-country-item"
+                                            style={{...styles, boxShadow: lightModeActive? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "0 1px 3px #BECCCC"}}>
                                             {e.name.common}
                                         </li>
                                     </Link>

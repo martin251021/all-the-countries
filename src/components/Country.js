@@ -7,7 +7,7 @@ export default function Country(props) {
     const {lightModeActive} = appContext
 
     const styles = {
-        backgroundColor: lightModeActive ? "white" : "rgb(84, 79, 79)",
+        backgroundColor: lightModeActive ? "white" : "#3C4F63",
         color: lightModeActive ? "black" : "white"
     }
 

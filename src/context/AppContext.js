@@ -14,7 +14,7 @@ export function useAppUpdate() {
 
 export function AppProvider({ children }) {
     const [lightModeActive, setLightModeActive] = useState(true)
-    document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#212224ff"
+    document.body.style.backgroundColor = lightModeActive ? "#f8f8f8" : "#263340"
 
     const themeSwitch = () => {
         setLightModeActive(prevState => !prevState)

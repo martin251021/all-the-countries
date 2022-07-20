@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8f8f8;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 code {
@@ -20,6 +21,7 @@ code {
   padding-right: 4rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .header-mode-switch {
@@ -27,8 +29,13 @@ code {
   cursor: pointer;
 }
 
-.header-h1 {
+.header > h1 {
   text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header > a {
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main {
@@ -42,6 +49,7 @@ code {
   padding: 1rem;
   position: sticky;
   top: 0;
+  transition: background-color 0.2s ease;
 }
 
 .search {
@@ -71,6 +79,7 @@ code {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .country-img {
@@ -128,8 +137,13 @@ code {
   margin-right: 20%;
 }
 
+.single-country-container {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
 .modal-country-container {
   margin-right: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
   
 }
 
@@ -213,5 +227,6 @@ code {
   border-radius: 5px;
   margin-left: 5px;
   margin-top: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 

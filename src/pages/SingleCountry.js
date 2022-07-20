@@ -58,9 +58,8 @@ export default function SingleCountry() {
                         <ul className="border-country-box">
                             {
                             apiData.filter(e => filterByBorder(country.borders ? country.borders.map(e => e) : [0], e.cca3)).map((e, i) => 
-                                    <Link style={{listStyle:"none"}} to={`/${e.cca3}`}>
-                                        <li key={e.cca3}
-                                            className="border-country-item"
+                                    <Link key={e.cca3} style={{listStyle:"none"}} to={`/${e.cca3}`}>
+                                        <li className="border-country-item"
                                             style={{...styles, boxShadow: lightModeActive? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "0 1px 3px #BECCCC"}}>
                                             {e.name.common}
                                         </li>

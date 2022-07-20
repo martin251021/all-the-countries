@@ -26,7 +26,6 @@ export default function FilterSearch() {
             onChange={handleSearchChange}
             value={activeSearch}
             placeholder="Search for a country.."
-            placeholderTextColor="white"
             className="search" />
         <select
             style={styles} 

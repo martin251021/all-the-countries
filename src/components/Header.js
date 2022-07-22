@@ -12,7 +12,7 @@ export default function Header() {
         backgroundColor: lightModeActive ? "white" : "#344557",
         color: lightModeActive ? "black" : "white",
         textDecoration: "none",
-        fontSize: width < 650 ? "12px" : "16px",
+        fontSize: width < 650 ? "10px" : "16px",
         paddingRight: width < 650 ? "2rem" : "4rem",
         paddingLeft: width < 650 ? "1rem" : "2rem"
     }

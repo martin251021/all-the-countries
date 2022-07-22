@@ -10,17 +10,13 @@ export default function Main() {
     const {filteredCountries, loading, width} = appContext
 
     const mainStyles = {
-        padding: width < 650 ? "1rem 1.5rem 0 1.5rem" : "2rem 4rem 4rem 4rem"
-    }
-
-    const countriesElmStyles = {
-        display: width < 650 ? "block" : "flex"
+        padding: width < 650 ? "5px 1.5rem 0 1.5rem" : "5px 4rem 4rem 4rem"
     }
 
      return(
         <div className="main" style={mainStyles}>
             <FilterSearch />
-            <div className="countries-elements" style={countriesElmStyles}>
+            <div className="countries-elements">
                {loading? <h1>Loading..</h1> : 
                filteredCountries.map((e, i) => {
                      return(

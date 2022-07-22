@@ -16,17 +16,18 @@ export default function FilterSearch() {
     const stylesNavbar = {
         backgroundColor: lightModeActive ? "#f8f8f8" : "#263340",
         display: width < 650 ? "block" : "flex",
-        padding: width < 650 ? "0" : "1rem"
+        // padding: width < 650 ? "0" : "1rem",
+        marginTop: width < 650 ? "0.2rem" : "1rem",
+        marginBottom: width < 650 ? "0.2rem" : "1rem"
     }
 
     const searchStyle = {
-        width: width < 650 ? "100%" : "35%"
+        width: width < 650 ? "96%" : "35%",
     }
 
     const filterStyle = {
         width: width < 650 ? "100%" : "25%",
         marginTop: width < 650 ? "8px" : "0"
-
     }
 
     return(

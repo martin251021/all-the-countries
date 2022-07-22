@@ -14,7 +14,7 @@ export default function Header() {
         textDecoration: "none",
         fontSize: width < 650 ? "12px" : "16px",
         paddingRight: width < 650 ? "2rem" : "4rem",
-        paddingLeft: width < 650 ? "1rem" : "4rem"
+        paddingLeft: width < 650 ? "1rem" : "2rem"
     }
 
     const h3Styles = {

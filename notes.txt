@@ -1,4 +1,3 @@
-- upravit responzivitu
 - pokusit sa použiť useReducer
 - upravit zobrazovanie krajin na hlavnej stranke - implementovat pagination (založka edge)
 - 

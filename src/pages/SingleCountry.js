@@ -5,7 +5,7 @@ import { useApp } from "../context/AppContext";
 
 export default function SingleCountry() {
     const {countryId} = useParams()
-    const {lightModeActive, apiData} = useApp()
+    const {lightModeActive, apiData, width} = useApp()
 
     const [loading, setLoading] = useState(true)
     const [country, setCountry] = useState(null)
@@ -37,13 +37,25 @@ export default function SingleCountry() {
         }
     }
 
+    const imgStyles = {
+        width: width < 650 ? "15rem" : "27rem",
+        height: width < 650 ? "9.5rem" : "18rem",
+        marginLeft: width < 650 ? "0" : "1rem",
+        marginRight: width < 650 ? "0" : "4rem"
+    }
+
+    const singleCountryStyles = {
+        display: width < 650 ? "inline-block" : "flex",
+        marginTop: width < 650 ? "1.5rem" : "8rem"
+    }
+
     return(
         
         <div className="single-country-container" style={styles}>
             {loading? <h1>Loading...</h1> : 
-            <div className="single-country">
+            <div style={singleCountryStyles} className="single-country">
                 <div className="modal-country-container">
-                    <img className="modal-country-img" src={country.flags.png}></img>
+                    <img style={imgStyles} className="modal-country-img" src={country.flags.png}></img>
                 </div>
                 <div className="modal-country-container">
                     <h1 className="modal-country-name">{country.name.common}</h1>

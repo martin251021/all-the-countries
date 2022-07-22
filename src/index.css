@@ -144,7 +144,6 @@ code {
 }
 
 .modal-country-container {
-  margin-right: 1rem;
   transition: background-color 0.2s ease, color 0.2s ease;
   
 }
@@ -184,6 +183,7 @@ code {
 }
 
 .modal-country-img {
+  margin-left: 1rem;
   margin-right: 4rem;
   width: 27rem;
   height: 18rem;

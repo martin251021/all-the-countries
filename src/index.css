@@ -60,6 +60,10 @@ code {
   border-radius: 5px;
 }
 
+.search-placeholder::placeholder {
+  color:white;
+}
+
 .filter {
   margin-left: auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

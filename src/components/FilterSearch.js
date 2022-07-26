@@ -39,7 +39,7 @@ export default function FilterSearch() {
             onChange={handleSearchChange}
             value={activeSearch}
             placeholder="Search for a country..."
-            className="search" />
+            className={lightModeActive? "search" : "search search-placeholder"} />
         <select
             style={{...styles, ...filterStyle}} 
             onChange={handleFilterChange}

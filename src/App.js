@@ -4,6 +4,7 @@ import SharedHeader from './pages/SharedHeader';
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SingleCountry from './pages/SingleCountry';
+import Error from './components/Error';
 import { AppProvider } from './context/AppContext';
 
 export const AppContext = React.createContext()
@@ -19,6 +20,7 @@ function App() {
             <Route index element={<Main />} />
             <Route path=":countryId" element={<SingleCountry />} />
             <Route exact path="/countries" element={<Navigate to="/"/>}/>
+            <Route path="/*" element={<Error />}/>
           </Route>
         </Routes>
       </BrowserRouter>

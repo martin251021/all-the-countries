@@ -16,7 +16,6 @@ export default function FilterSearch() {
     const stylesNavbar = {
         backgroundColor: lightModeActive ? "#f8f8f8" : "#263340",
         display: width < 650 ? "block" : "flex",
-        // padding: width < 650 ? "0" : "1rem",
         marginTop: width < 650 ? "0.2rem" : "1rem",
         marginBottom: width < 650 ? "0.2rem" : "1rem"
     }

@@ -2,12 +2,14 @@ import {Link, useParams} from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useApp } from "../context/AppContext";
+import Error from "../components/Error";
 
 export default function SingleCountry() {
     const {countryId} = useParams()
     const {lightModeActive, apiData, width} = useApp()
 
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
     const [country, setCountry] = useState(null)
 
     const styles = {
@@ -18,11 +20,13 @@ export default function SingleCountry() {
     useEffect(() => {
         const fetchCountry = async() => {
             try{
+                setError(false)
                 setLoading(true)
                 const response = await axios(`https://restcountries.com/v3.1/alpha/${countryId}`)
                 setCountry(...response.data)
                 setLoading(false)
             } catch(err) {
+                setError(true)
                 console.log(err)
             }
         }
@@ -52,7 +56,7 @@ export default function SingleCountry() {
     return(
         
         <div className="single-country-container" style={styles}>
-            {loading? <h1>Loading...</h1> : 
+            {loading && !error ? <h1 className="error-loading">Loading...</h1> : loading && error ? <Error /> :
             <div style={singleCountryStyles} className="single-country">
                 <div className="modal-country-container">
                     <img style={imgStyles} className="modal-country-img" src={country.flags.png}></img>

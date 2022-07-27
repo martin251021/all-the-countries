@@ -3,7 +3,6 @@ import Country from "../components/Country";
 import FilterSearch from "../components/FilterSearch";
 import { useApp} from "../context/AppContext";
 
-
 export default function Main() {
 
     const appContext = useApp()
@@ -26,7 +25,6 @@ export default function Main() {
                                     />
                                         )
                             })}                                                   
-
             </div>
         </div>
     )

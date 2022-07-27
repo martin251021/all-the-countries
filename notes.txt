@@ -1,4 +1,0 @@
-- pokusit sa použiť useReducer
-- upravit zobrazovanie krajin na hlavnej stranke - implementovat pagination (založka edge)
-- 
-- BONUS: nahrať všetky data na mongodb, spravit server a vytvorit vlastnu API, ktora bude data vracat, potom volat tuto API pre data

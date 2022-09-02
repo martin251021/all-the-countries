@@ -1,12 +1,12 @@
 import {Link, useParams} from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import { useApp } from "../context/AppContext";
+import { useThemeContext } from "../context/AppContext";
 import Error from "../components/Error";
 
 export default function SingleCountry() {
     const {countryId} = useParams()
-    const {lightModeActive, apiData, width} = useApp()
+    const {lightModeActive, apiData, width} = useThemeContext()
 
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)

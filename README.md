@@ -35,7 +35,7 @@ Command for installing all packages and necessary dependencies.
 
 ### `npm start`
 
-Launches the app the development mode and opens [http://localhost:3000](http://localhost:3000) automatically.
+Launches the app in development mode and opens [http://localhost:3000](http://localhost:3000) automatically.
 
 ## Link
 

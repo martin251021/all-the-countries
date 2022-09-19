@@ -1,6 +1,6 @@
 ## Introduction
 
-This project was created as a challenge from assignment by [FrontendMentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Assignment usually provides also additional assets (prewritten HTML, JPEG design files, style guides, etc), however, they were not used in this project. Final output is therefore slightly different in terms of styles and design. Used data are fetched from an API. Responsive design for mobile devices included.
+This project was created as a challenge from assignment by [FrontendMentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Assignment usually provides also additional assets (prewritten HTML, JPEG design files, style guides, etc), however, they were not used in this project. Final output is therefore slightly different in terms of styles and design. Used data is fetched from an API. Responsive design for mobile devices included.
 
 ## Screenshot
 

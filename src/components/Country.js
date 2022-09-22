@@ -1,9 +1,9 @@
-import { useApp } from "../context/AppContext";
+import { useThemeContext } from "../context/AppContext";
 import {Link} from "react-router-dom";
 
 export default function Country(props) {
 
-    const appContext = useApp()
+    const appContext = useThemeContext()
     const {lightModeActive, width} = appContext
 
     const styles = {

@@ -1,20 +1,16 @@
-import { useApp, useAppUpdate } from "../context/AppContext";
+import { useThemeContext } from "../context/AppContext";
+import { filterCountries } from "../services/util";
 
-export default function FilterSearch() {
-
-    const appContext = useApp()
-    const appContextUpdate = useAppUpdate()
-
-    const {activeSearch, activeFilter, lightModeActive, width} = appContext
-    const {handleSearchChange, handleFilterChange} = appContextUpdate
+export const FilterSearch = ({ countries, countriesCallback }) => {
+    const { colorMode, width } = useThemeContext()
 
     const styles = {
-        backgroundColor: lightModeActive ? "white" : "#546F8C",
-        color: lightModeActive ? "#212224ff" : "white"
+        backgroundColor: colorMode ? "white" : "#546F8C",
+        color: colorMode ? "#212224ff" : "white"
     }
 
     const stylesNavbar = {
-        backgroundColor: lightModeActive ? "#f8f8f8" : "#263340",
+        backgroundColor: colorMode ? "#f8f8f8" : "#263340",
         display: width < 650 ? "block" : "flex",
         marginTop: width < 650 ? "0.2rem" : "1rem",
         marginBottom: width < 650 ? "0.2rem" : "1rem"
@@ -29,20 +25,23 @@ export default function FilterSearch() {
         marginTop: width < 650 ? "8px" : "0"
     }
 
+    const searchCountries = (query) => {
+        countriesCallback(filterCountries(countries ,query))
+    };
+
     return(
         <div 
         style={stylesNavbar}
         className="navbar">
         <input
             style={{...styles, ...searchStyle}} 
-            onChange={handleSearchChange}
-            value={activeSearch}
+            onChange={event => searchCountries(event.target.value)}
             placeholder="Search for a country..."
-            className={lightModeActive? "search" : "search search-placeholder"} />
+            className={colorMode? "search" : "search search-placeholder"} />
         <select
             style={{...styles, ...filterStyle}} 
-            onChange={handleFilterChange}
-            value={activeFilter} 
+            onChange={() => false}
+            value={''} 
             className="filter">                       
             <option value="All">Filter by region</option>
             <option value="Africa">Africa</option>
